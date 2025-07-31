@@ -40,7 +40,8 @@
 
 4. "비디오에서 AI 기반 인사이트까지(FROM VIDEO TO AI-BASED INSIGHT)"라는 제목으로, AI 추론이 어디서 일어날 수 있는지 보여줌.
 <img width="1773" height="916" alt="image" src="https://github.com/user-attachments/assets/e8db6871-fab4-46b7-96ac-65878cc34c9e" />
-다양한 산업 분야의 엣지 디바이스들 -> (온프레미스 서버 - 클라우드) 중앙 처리 -> AI 결과물
+다양한 산업 분야의 엣지 디바이스들 -> (온프레미스 서버 - 클라우드) 중앙 처리 -> AI 결과물<br>
+-> 비디오 데이터가 수집된 후 AI 처리를 통해 실용적인 비즈니스 인사이트로 변환되는 전체 파이프라인 사진임
 
 | 산업분야 (Industry)       | 엣지 디바이스들 설명 (Description) |
 | ------------------- | ---------------- |
