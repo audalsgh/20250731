@@ -2,6 +2,11 @@
 이 실습에서는 NVIDIA의 도구를 사용하여 하드웨어 가속 비디오 AI 애플리케이션을 구축하고 유지보수하는 방법을 배움.<br>
 실시간 비디오 AI 애플리케이션을 만들기 위해 NVIDIA의 DeepStream, TAO Toolkit, 그리고 TensorRT를 사용할 것.<br>
 
+<img width="600" height="461" alt="image" src="https://github.com/user-attachments/assets/b974828a-72c1-416f-a04c-69dfb9123f79" />
+
+NVIDIA DeepStream의 Primary GIE (GPU Inference Engine) 설정 파일입니다. 주로 교통 카메라에서 차량을 감지하는 AI 모델의 설정을 담고 있습니다.
+
+
 1. "H:MM:SS 남은 시간"을 보여주는 타이머로, 제한 시간안에 실습을 마쳐야한다.
 <img width="1906" height="895" alt="image" src="https://github.com/user-attachments/assets/7bd55107-26e2-4223-9b99-c5182b4dfea9" />
 2. 실습전에 오른쪽 start 버튼을 눌러야 GPU 가속 서버가 실행된다.
