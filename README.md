@@ -1,4 +1,4 @@
-<img width="1822" height="885" alt="image" src="https://github.com/user-attachments/assets/a880b4ef-f409-4e9a-af6a-cb74a1d95e86" /># 29일차
+# 29일차
 
 ## 어제 다 못마쳤다면, 코랩 앙상블 계속 진행.
 <img width="1210" height="734" alt="image" src="https://github.com/user-attachments/assets/92fb1082-cc92-4b4e-a15a-e322399c8121" />
