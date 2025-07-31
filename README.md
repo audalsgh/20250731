@@ -15,4 +15,4 @@
 - 사비로 90달러(128,279원)결제한 증빙 사진, 서류제출시 금액은 돌려받는 식으로 지원받음.
 
 **-> 내용이 매우 많아 MarkDown .md파일을 따로 만들어 정리함**<br>
-([Building Real-Time Video AI Applications 정리.md](https://github.com/audalsgh/20250731/blob/main/Building%20Real-Time%20Video%20AI%20Applications%20%EC%A0%95%EB%A6%AC.md))
+[Building Real-Time Video AI Applications 정리.md](https://github.com/audalsgh/20250731/blob/main/Building%20Real-Time%20Video%20AI%20Applications%20%EC%A0%95%EB%A6%AC.md)
