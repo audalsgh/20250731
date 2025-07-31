@@ -23,6 +23,7 @@
 <img width="1930" height="289" alt="image" src="https://github.com/user-attachments/assets/7852eeae-76f2-4760-86d2-629c605f41f5" />
 3. 실시간 영상 기반 AI 적용 분야들.<br>(보안·운영·교통, 제조·물류·콘텐츠 분야까지, 카메라로 획득한 영상을 즉각 분석하여 다양한 산업 현장의 효율성과 안전성을 높이는 데 활용됨)
 <img width="1822" height="885" alt="image" src="https://github.com/user-attachments/assets/3958e92f-14dd-493b-adbc-cdec2a782f83" />
+
 | 항목 (영어)                     | 설명                    |
 | --------------------------- | --------------------- |
 | 출입 통제 (Access Control)      | 사람들이 출입하는 공간에서의 보안 관리 |
@@ -40,6 +41,7 @@
 4. "비디오에서 AI 기반 인사이트까지(FROM VIDEO TO AI-BASED INSIGHT)"라는 제목으로, AI 추론이 어디서 일어날 수 있는지 보여줌.
 <img width="1773" height="916" alt="image" src="https://github.com/user-attachments/assets/e8db6871-fab4-46b7-96ac-65878cc34c9e" />
 다양한 산업 분야의 엣지 디바이스들 -> (온프레미스 서버 - 클라우드) 중앙 처리 -> AI 결과물
+
 | 산업분야 (Industry)       | 엣지 디바이스들 설명 (Description) |
 | ------------------- | ---------------- |
 | 안전 (Safety)         | 보안 카메라           |
