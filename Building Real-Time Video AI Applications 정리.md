@@ -1,4 +1,4 @@
-## 들으면서 정리
+## Building Real-Time Video AI Applications 정리
 이 실습에서는 NVIDIA의 도구를 사용하여 하드웨어 가속 비디오 AI 애플리케이션을 구축하고 유지보수하는 방법을 배움.<br>
 실시간 비디오 AI 애플리케이션을 만들기 위해 NVIDIA의 DeepStream, TAO Toolkit, 그리고 TensorRT를 사용할 것.<br>
 
