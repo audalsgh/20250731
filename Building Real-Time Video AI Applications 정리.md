@@ -4,7 +4,8 @@
 
 <img width="600" height="461" alt="image" src="https://github.com/user-attachments/assets/b974828a-72c1-416f-a04c-69dfb9123f79" />
 
--> NVIDIA DeepStream의 Primary GIE (GPU Inference Engine) 설정 파일입니다. 주로 교통 카메라에서 차량을 감지하는 AI 모델의 설정을 담고 있습니다.<br>
+-> NVIDIA DeepStream의 Primary GIE (GPU Inference Engine) 설정 파일입니다.<br>
+주로 교통 카메라에서 차량을 감지하는 AI 모델의 설정을 담고 있습니다.<br>
 
 **강의 시작**
 1. "H:MM:SS 남은 시간"을 보여주는 타이머로, 제한 시간안에 실습을 마쳐야한다.
