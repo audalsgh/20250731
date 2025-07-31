@@ -1,6 +1,7 @@
 # 29일차
 
 ## 어제 다 못마쳤다면, 코랩 앙상블 계속 진행.
+[7월 30일자 리포지터리에 정리했음]()
 <img width="1210" height="734" alt="image" src="https://github.com/user-attachments/assets/92fb1082-cc92-4b4e-a15a-e322399c8121" />
 
 **-> 결과영상 : 피플넷 + YOLOv11의 앙상블로, 사람뿐만 아니라 일반적인 객체까지 감지하는 모습.**
