@@ -21,7 +21,7 @@
 <img width="1906" height="895" alt="image" src="https://github.com/user-attachments/assets/7bd55107-26e2-4223-9b99-c5182b4dfea9" />
 2. 실습전에 오른쪽 start 버튼을 눌러야 GPU 가속 서버가 실행된다.
 <img width="1930" height="289" alt="image" src="https://github.com/user-attachments/assets/7852eeae-76f2-4760-86d2-629c605f41f5" />
-3. 실시간 영상 기반 AI 적용 분야들. (보안·운영·교통, 제조·물류·콘텐츠 분야까지, 카메라로 획득한 영상을 즉각 분석하여 다양한 산업 현장의 효율성과 안전성을 높이는 데 활용됨)
+3. 실시간 영상 기반 AI 적용 분야들.<br>(보안·운영·교통, 제조·물류·콘텐츠 분야까지, 카메라로 획득한 영상을 즉각 분석하여 다양한 산업 현장의 효율성과 안전성을 높이는 데 활용됨)
 <img width="1822" height="885" alt="image" src="https://github.com/user-attachments/assets/3958e92f-14dd-493b-adbc-cdec2a782f83" />
 | 항목 (영어)                     | 설명                    |
 | --------------------------- | --------------------- |
