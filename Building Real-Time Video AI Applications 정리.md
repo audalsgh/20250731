@@ -79,8 +79,13 @@
 
 8. DeepStream SDK, TAO Toolkit, 그리고 TensorRT
 <img width="1796" height="912" alt="image" src="https://github.com/user-attachments/assets/3ea21179-be1a-46ef-8218-c98c2f62aee7" />
-TAO Toolkit : 객체 탐지, 분류, 세분화와 같은 비전 AI 작업을 위한 모델을 생성하는 데 사용, 또한 모델의 전체 크기를 줄이는 모델 프루닝(pruning)과 양자화(quantization)와 같은 모델 최적화도 가능
+TAO Toolkit : 객체 탐지, 분류, 세분화와 같은 비전 AI 작업을 위해 "사전 훈련된 모델 기반으로 더 최적화한 모델"을 만드는 데 사용되는 모델 적응 SDK,<br>
+입력 데이터 → PRE-TRAINED MODEL → TRAIN → PRUNE → RETRAIN → OUTPUT MODEL<br>
+또한 모델의 전체 크기를 줄이는 모델 프루닝(pruning)과 양자화(quantization)와 같은 모델 최적화도 가능<br>
 
+DEEPSTREAM SDK : 지능형 비디오 분석(IVA) 파이프라인 구축을 위한 가속화된 AI 프레임워크, 디코더 인코더, 이미지 스케일링 변환<br>
+입력 → DECODE → PRE-PROCESS → PRIMARY INFERENCE → TRACKER → COMPUTE → ANALYTICS/APPS → ENCODER<br>
+실시간 비디오 스트림 처리 및 분석 전체 파이프라인 구축이 목적.
 
 9.
 <img width="1705" height="865" alt="image" src="https://github.com/user-attachments/assets/71b71547-3dd6-435a-87a7-caf1cf45f841" />
