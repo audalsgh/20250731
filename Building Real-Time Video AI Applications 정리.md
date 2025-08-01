@@ -1,4 +1,4 @@
-## Building Real-Time Video AI Applications 정리
+<img width="1721" height="817" alt="image" src="https://github.com/user-attachments/assets/19cb60ff-b287-4969-8215-8e3557a76e8f" />## Building Real-Time Video AI Applications 정리
 이 실습에서는 NVIDIA의 도구를 사용하여 하드웨어 가속 비디오 AI 애플리케이션을 구축하고 유지보수하는 방법을 배움.<br>
 실시간 비디오 AI 애플리케이션을 만들기 위해 NVIDIA의 DeepStream, TAO Toolkit, 그리고 TensorRT를 사용할 것.<br>
 
@@ -59,4 +59,39 @@
 
 상단: 중앙 서버에만 AI 칩이 존재하는 "온프레미스 또는 클라우드 기반 인프라 시스템"<br>
 하단: AI 칩이 내장된 엣지 기기들 각각에서 처리하는 "엣지 컴퓨팅 시스템"<br>
--> 각각의 기기들에 모두 AI칩이 내장되있어서, 데이터를 중앙 서버로 보내지 않고 현장(엣지)에서 직접 처리하여 실시간 분석을 수행하는 시스템
+-> 각각의 기기들에 모두 AI칩이 내장되있어서, 데이터를 중앙 서버로 보내지 않고 현장(엣지)에서 직접 처리하여 실시간 분석을 수행하는 시스템<br>
+-> Orin nano 등이 엣지 디바이스 예시고, 기후변화 등에 쓰인다.
+
+6. 빠른응답이 필요할때 "엣지 컴퓨팅 시스템"을 쓴다. IVA(Intelligent Video Analytics) 애플리케이션 워크플로우를 보니 더 빠른 구조다. 
+<img width="1821" height="958" alt="image" src="https://github.com/user-attachments/assets/521bf29b-18e2-4b60-91d4-14b47f3a2f41" />
+
+7. 비디오 AI 솔루션 개발 시 직면하는 주요 기술적, 경제적 도전과제 세가지
+
+<img width="1822" height="792" alt="image" src="https://github.com/user-attachments/assets/33a4a6aa-607d-4e88-b301-d1bc1d5abaec" />
+
+| 항목 (영문)                            | 항목 (한글)             | 주요 내용                                                                                                             |
+| ---------------------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **DESIGN COMPLEXITY**              | 설계 복잡성              | - AI 프레임워크의 다양성: TensorFlow, PyTorch, ONNX 등 여러 프레임워크 지원 필요<br>- 다양한 툴 체인: C++, Python, R, Java 등 여러 언어와 도구 통합 필요 |
+| **OPTIMIZING TCO**                 | 총 소유비용 최적화          | - 다변수 도전 과제를 순환 다이어그램으로 표현<br>- 정확성(Accuracy), 처리량(Throughput), 지연시간(Latency), 전력(Power), 비용(Cost) 간 균형 최적화 필요    |
+| **ONE CODE BASE MULTIPLE TARGETS** | 하나의 코드베이스로 다중 타겟 지원 | - 엣지에서 클라우드까지 다양한 환경에 동일 코드 배포<br>- 자동차, 의료, 보안, 제조 등 서로 다른 수직 산업 분야에 적용 과제                                       |
+
+8.
+<img width="1796" height="912" alt="image" src="https://github.com/user-attachments/assets/3ea21179-be1a-46ef-8218-c98c2f62aee7" />
+
+9.
+<img width="1705" height="865" alt="image" src="https://github.com/user-attachments/assets/71b71547-3dd6-435a-87a7-caf1cf45f841" />
+
+10. 효율적인 비디오 스트림을 위해 CPU, GPU가 번갈아가며 사용됨.
+<img width="1721" height="817" alt="image" src="https://github.com/user-attachments/assets/0f40f54c-3a00-4f7d-b350-9e97f75972fd" />
+
+11. 상단엔 메세지를 버스로 교환하는 모습, 하단은 비디오가 파이프라인을 통해 교환되는 모습
+<img width="1735" height="798" alt="image" src="https://github.com/user-attachments/assets/6088b7c9-a950-4cc8-8f7a-25b1057f7663" />
+
+12.
+<img width="1814" height="948" alt="image" src="https://github.com/user-attachments/assets/a3607f5b-7898-4e36-b63f-6cd8895c8c4f" />
+
+13.
+<img width="1771" height="742" alt="image" src="https://github.com/user-attachments/assets/98348859-d826-491c-9af6-f7cb4d5b9f5e" />
+
+14. 
+<img width="1365" height="894" alt="image" src="https://github.com/user-attachments/assets/2d06d44d-d7f3-417a-ba9c-e96177e2c1ed" />
