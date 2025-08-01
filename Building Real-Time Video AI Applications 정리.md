@@ -77,7 +77,7 @@
 | **OPTIMIZING TCO**                 | 총 소유비용 최적화          | - 다변수 도전 과제를 순환 다이어그램으로 표현<br>- 정확성(Accuracy), 처리량(Throughput), 지연시간(Latency), 전력(Power), 비용(Cost) 간 균형 최적화 필요    |
 | **ONE CODE BASE MULTIPLE TARGETS** | 하나의 코드베이스로 다중 타겟 지원 | - 엣지에서 클라우드까지 다양한 환경에 동일 코드 배포<br>- 자동차, 의료, 보안, 제조 등 서로 다른 수직 산업 분야에 적용 과제                                       |
 
-8. DeepStream SDK, TAO Toolkit, 그리고 TensorRT
+8. DeepStream SDK, TAO Toolkit
 <img width="1796" height="912" alt="image" src="https://github.com/user-attachments/assets/3ea21179-be1a-46ef-8218-c98c2f62aee7" />
 TAO Toolkit : 객체 탐지, 분류, 세분화와 같은 비전 AI 작업을 위해 "사전 훈련된 모델 기반으로 더 최적화한 모델"을 만드는 데 사용되는 모델 적응 SDK,<br>
 입력 데이터 → PRE-TRAINED MODEL → TRAIN → PRUNE → RETRAIN → OUTPUT MODEL<br>
@@ -87,20 +87,88 @@ DEEPSTREAM SDK : 지능형 비디오 분석(IVA) 파이프라인 구축을 위�
 입력 → DECODE → PRE-PROCESS → PRIMARY INFERENCE → TRACKER → COMPUTE → ANALYTICS/APPS → ENCODER<br>
 실시간 비디오 스트림 처리 및 분석 전체 파이프라인 구축이 목적.
 
-9.
+9. GStreamer : 오픈소스 멀티미디어 분석 프레임워크로, 플러그인을 사용하여 비디오/오디오 처리에서 "모듈화된 접근 파이프라인"을 구성하는 방식
 <img width="1705" height="865" alt="image" src="https://github.com/user-attachments/assets/71b71547-3dd6-435a-87a7-caf1cf45f841" />
 
-10. 효율적인 비디오 스트림을 위해 CPU, GPU가 번갈아가며 사용됨.
+- Level 1 - 플러그인(Plugin) : 기존 소프트웨어의 기능을 확장하거나 특정 작업을 수행하기 위해 추가로 설치하는 독립적인 소프트웨어 모듈입니다.
+  - PAD를 통해 연결되는 기본 빌딩 블록에 쓰임 (PPacket Assembly/Disassembly 또는 Packet Assembler/Disassembler)
+  - PAD는 주로 X.25 네트워크에서 사용되는 장치로, 서로 다른 프로토콜이나 데이터 형식 간의 변환을 담당.
+  - 예시: Src Plugin → Src → Sink → Filter Plugin → Src → Sink → Sink Plugin (각 플러그인은 특정 기능을 수행하는 최소 단위)
+
+- Level 2 - BINS (빈)
+    - 플러그인들의 컨테이너/집합을 의미하며, 여러 플러그인을 하나의 단위로 묶어서 관리하는 것
+    - 예시: Src → Plugin A → Plugin B → Sink으로 구성된 BIN
+
+- Level 3 - PIPELINE (파이프라인)
+  - 데이터가 여러 단계의 처리 과정을 순차적으로 거치면서 변환되는 아키텍처 패턴
+  - 기능: 버스를 제공하고 동기화를 관리하는 최상위 레벨 빈
+  - 구조: SOURCE BIN → PROCESS BIN → SINK BIN
+  - 예시: Video Source → Decoder → Scale → Filter → Display
+
+10. 효율적인 비디오 스트림을 위해 CPU, GPU가 번갈아가며 사용되어 메모리 효율 증가.
 <img width="1721" height="817" alt="image" src="https://github.com/user-attachments/assets/0f40f54c-3a00-4f7d-b350-9e97f75972fd" />
 
-11. 상단엔 메세지를 버스로 교환하는 모습, 하단은 비디오가 파이프라인을 통해 교환되는 모습
+플러그인 아키텍처:
+- 입력: Input (Metadata)
+- 처리: PLUGIN (LOW LEVEL LIB + GPU Hardware를 통한 Low Level API)
+- 출력: Output + Metadata
+
+| 카테고리         | 플러그인               | 기능                        |
+| ------------ | ------------------ | ------------------------- |
+| **비디오 처리**   | gst-nvvideoconvert | 가속화된 비디오 디코더              |
+|              | gst-nvstreammux    | 스트림 집계기 – 믹서 및 배치 처리      |
+|              | gst-nvinfer        | TensorRT 기반 추론 (탐지 및 분류)  |
+|              | gst-nvtracker      | 참조 KLT 추적기 구현             |
+|              | gst-nvdsosd        | 화면 표시 API (박스 및 텍스트 오버레이) |
+| **렌더링 및 변환** | gst-tiler          | 다중 소스를 2D 그리드 배열로 렌더링     |
+|              | gst-nvegltransform | 가속화된 X11/EGL 기반 렌더러 플러그인  |
+|              | gst-nvvideoconvert | 스케일링, 포맷 변환, 회전           |
+|              | gst-nvdewarper     | 360도 카메라 입력 디워핑           |
+| **기타**       | gst-nvmsgconv      | 메타데이터 생성                  |
+|              | gst-nvmsgbroker    | 클라우드로 메시징                 |
+
+
+12. 스트리밍 데이터의 "애플리케이션과 파이프라인 간 통신 및 데이터 교환"을 위한 여러 메커니즘.
 <img width="1735" height="798" alt="image" src="https://github.com/user-attachments/assets/6088b7c9-a950-4cc8-8f7a-25b1057f7663" />
 
-12.
+- 앱과 버스 : messages, events, queries 교환
+- 파이프라인 내부 : Video File → Decoder → Scale → Filter → Display 흐름<br>
+(버퍼 = 파이프라인 내부 플러그인들 사이의 이동경로를 말함)
+
+14. 메타데이터 구조에 대한 설명으로, 메타데이터가 "비디오 분석 결과를 구조화된 형태로 전달"하는 DeepStream의 핵심 메커니즘
 <img width="1814" height="948" alt="image" src="https://github.com/user-attachments/assets/a3607f5b-7898-4e36-b63f-6cd8895c8c4f" />
 
-13.
+| 항목                      | 세부 내용                                                                                                                                                    |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **파이프라인 구성**            | `Gst-nvstreammux` → `Gst-nvinfer` → `Gst-nvosd`<br>각 플러그인의 `src`에서 `sink`로 버퍼와 함께 메타데이터 전달                                                               |
+| **메타데이터 생성 과정**         | - **생성**: 그래프 내 플러그인들이 메타데이터를 생성<br>- **첨부**: 생성된 메타데이터를 버퍼에 첨부하여 다운스트림으로 전달<br>- **접근**: 프로브 함수를 연결하여 메타데이터 접근                                          |
+| **DeepStream 메타데이터 내용** | AI 추론 결과 인사이트 포함:<br>- 탐지된 객체 수 (Number of objects detected)<br>- 바운딩 박스 좌표 (Bounding box coordinates)<br>- 객체 클래스 (Object classes)                      |
+| **메타데이터 구조**            | - `NvDsFrameMeta`: 프레임 레벨 메타데이터<br>- `NvDsObjectMeta`: 객체 레벨 메타데이터<br>- `gst_nvinfer_id`: 추론 ID<br>- `rect_params`: 사각형 파라미터<br>- `display_id`: 디스플레이 ID |
+
+15. 비디오 AI 시스템의 성능을 평가하는 주요 지표들 4가지.
 <img width="1771" height="742" alt="image" src="https://github.com/user-attachments/assets/98348859-d826-491c-9af6-f7cb4d5b9f5e" />
 
-14. 
+  1. Accuracy (정확도)
+    - IoU (Intersection over Union): 교집합/합집합 비율로 객체 탐지 정확도 측정
+    - mAP (Mean Average Precision): 평균 정밀도, 모델의 전반적인 성능 평가
+  2. Throughput (처리량)
+    - 정의: 단위 시간 내에 전송 및 수신되는 데이터의 양
+    - 의미: 시스템이 얼마나 많은 데이터를 처리할 수 있는지
+  3. Latency (지연시간)
+    - 정의: 프레임이 네트워크를 통해 전송되는 데 걸리는 시간
+    - 의미: 실시간 처리에서 중요한 응답 속도
+  4. Hardware Utilization and Memory Footprint (하드웨어 활용도 및 메모리 사용량)
+    - 의미: 시스템 리소스의 효율적 사용도
+
+우측 기어 다이어그램: 성능 최적화를 위한 균형 조정을 상징적으로 표현한 것으로, 이 모든 지표들이 상호 연관되어 있으며 하나를 개선하면 다른 요소에 영향을 미칠 수 있음을 보여줌.
+비디오 AI 시스템의 종합적인 성능 평가를 위한 핵심 메트릭들.
+
+16. "하드웨어부터 사용자 앱단까지 전체 스택을 지원"하는 비디오 ai 개발 플랫폼인 DeepStream SDK의 기능 총정리
 <img width="1365" height="894" alt="image" src="https://github.com/user-attachments/assets/2d06d44d-d7f3-417a-ba9c-e96177e2c1ed" />
+
+| 레이어                                   | 구성 요소                                                                                                                                                                                                                                                                                                                                                             |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **USER APPLICATIONS**<br>(사용자 앱단, 최상단) | - **ACCESS CONTROL**: 출입 통제<br>- **SMART PARKING**: 스마트 주차<br>- **RETAIL ANALYTICS/INSIGHT**: 리테일 분석/인사이트<br>- **INTELLIGENT TRAFFIC SYSTEMS**: 지능형 교통 시스템<br>- **LAW ENFORCEMENT**: 법 집행                                                                                                                                                                         |
+| **DEEPSTREAM SDK**<br>(중간층)           | **PLUGINS**<br>- GPU Optimized TensorRT Plugin<br>- Communication Plugins<br>- 3rd Party Lib/AI Plugins<br><br>**FLEXIBLE SCALABLE GRAPHS**<br>- 확장 가능한 파이프라인 구조 (연결된 녹색 박스들로 표현)<br><br>**DEVELOPMENT TOOLS**<br>- End-to-End Reference Applications<br>- App Building/Enhancement Tools<br>- Sample Applications and Code<br>- Profiling and Performance Tuning |
+| **Base Technologies**<br>(하위층)        | - **TENSORRT**: AI 추론 최적화<br>- **MULTIMEDIA APIs/VIDEO CODEC SDK**: 멀티미디어 및 비디오 코덱<br>- **IMAGING**: 이미징 처리<br>- **METADATA DESCRIPTION**: 메타데이터 기술                                                                                                                                                                                                               |
+| **Hardware Platforms**<br>(최하위)       | - **LINUX, CUDA**: 리눅스 및 CUDA 기반<br>- **JETSON, TESLA**: NVIDIA 하드웨어 플랫폼                                                                                                                                                                                                                                                                                          |
