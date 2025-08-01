@@ -90,7 +90,7 @@ DEEPSTREAM SDK : 지능형 비디오 분석(IVA) 파이프라인 구축을 위�
 9. GStreamer : 오픈소스 멀티미디어 분석 프레임워크로, 플러그인을 사용하여 비디오/오디오 처리에서 "모듈화된 접근 파이프라인"을 구성하는 방식
 <img width="1705" height="865" alt="image" src="https://github.com/user-attachments/assets/71b71547-3dd6-435a-87a7-caf1cf45f841" />
 
-- Level 1 - 플러그인(Plugin) : 기존 소프트웨어의 기능을 확장하거나 특정 작업을 수행하기 위해 추가로 설치하는 독립적인 소프트웨어 모듈입니다.
+- Level 1 - 플러그인(Plugin) : 기존 소프트웨어의 기능을 확장하거나 특정 작업을 수행하기 위해 추가로 설치하는 독립적인 소프트웨어 모듈.
   - PAD를 통해 연결되는 기본 빌딩 블록에 쓰임 (PPacket Assembly/Disassembly 또는 Packet Assembler/Disassembler)
   - PAD는 주로 X.25 네트워크에서 사용되는 장치로, 서로 다른 프로토콜이나 데이터 형식 간의 변환을 담당.
   - 예시: Src Plugin → Src → Sink → Filter Plugin → Src → Sink → Sink Plugin (각 플러그인은 특정 기능을 수행하는 최소 단위)
