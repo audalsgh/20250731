@@ -77,8 +77,10 @@
 | **OPTIMIZING TCO**                 | 총 소유비용 최적화          | - 다변수 도전 과제를 순환 다이어그램으로 표현<br>- 정확성(Accuracy), 처리량(Throughput), 지연시간(Latency), 전력(Power), 비용(Cost) 간 균형 최적화 필요    |
 | **ONE CODE BASE MULTIPLE TARGETS** | 하나의 코드베이스로 다중 타겟 지원 | - 엣지에서 클라우드까지 다양한 환경에 동일 코드 배포<br>- 자동차, 의료, 보안, 제조 등 서로 다른 수직 산업 분야에 적용 과제                                       |
 
-8.
+8. DeepStream SDK, TAO Toolkit, 그리고 TensorRT
 <img width="1796" height="912" alt="image" src="https://github.com/user-attachments/assets/3ea21179-be1a-46ef-8218-c98c2f62aee7" />
+TAO Toolkit : 객체 탐지, 분류, 세분화와 같은 비전 AI 작업을 위한 모델을 생성하는 데 사용, 또한 모델의 전체 크기를 줄이는 모델 프루닝(pruning)과 양자화(quantization)와 같은 모델 최적화도 가능
+
 
 9.
 <img width="1705" height="865" alt="image" src="https://github.com/user-attachments/assets/71b71547-3dd6-435a-87a7-caf1cf45f841" />
